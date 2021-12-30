@@ -1,45 +1,35 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+
+import pokeServices from "./services/pokemon/pokemon.services.js";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [pokemons, setPokemons] = useState({});
+  useEffect(() => {
+    pokeServices.getByNumber(1).then((data) => {
+      setPokemons(data);
+    });
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      {!!pokemons.sprites && (
+        <div>
+          <h2> Name: {pokemons.name} </h2>
+          <img src={pokemons.sprites.front_default} className="h-56 w-auto" />
+          <h2> Height: {pokemons.height} KG </h2>
+          <h2> Stats: </h2>
+          {pokemons.stats.map((stat) => (
+            <div>
+              <h2>
+                {" "}
+                {stat.stat.name} : {stat.base_stat}{" "}
+              </h2>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
