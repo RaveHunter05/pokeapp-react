@@ -1,11 +1,11 @@
 import "./App.css";
 
-import PokemonNumber from "./containers/PokemonNumber.jsx";
+import PokemonNavigators from "./navigators/pokemon.navigator.jsx";
 
 function App() {
   return (
     <div className="flex justify-center items-center h-screen">
-      <PokemonNumber />
+      <PokemonNavigators />
     </div>
   );
 }
