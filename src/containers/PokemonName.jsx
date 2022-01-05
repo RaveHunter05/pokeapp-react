@@ -13,16 +13,18 @@ function PokemonNumber() {
       setPokemons(data);
     });
   }, [currentPokemon]);
+
   return (
     <div className="bg-yellow-200 w-5/6 md:w-1/5 border-2 border-black rounded-lg flex flex-col justify-center items-center space-y-4 p-4 pb-16">
-      <Search />
+      <Search changePokemon={setCurrentPokemon} />
       {!!pokemons.sprites && (
         <div>
           <h2> Searching pokemons by name... </h2>
           <img src={pokemons.sprites.front_default} className="h-56 w-auto" />
           <article className="flex flex-wrap space-x-2 justify-center pb-6">
-            {pokemons.types.map((type) => (
+            {pokemons.types.map((type, index) => (
               <div
+                key={index}
                 className={`border-2 border-black rounded-full capitalize font-bold py-2 px-4 text-white ${
                   type.type.name === "normal"
                     ? "bg-yellow-800"
@@ -66,8 +68,8 @@ function PokemonNumber() {
               {" "}
               <span className="font-bold underline"> Stats </span>{" "}
             </h2>
-            {pokemons.stats.map((stat) => (
-              <div>
+            {pokemons.stats.map((stat, index) => (
+              <div key={index}>
                 <h2>
                   {" "}
                   <span className="font-bold capitalize">

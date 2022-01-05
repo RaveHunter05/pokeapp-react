@@ -18,7 +18,7 @@ const pokemonServices = {
    */
   getByName: async (name) => {
     const pokemon = await api.get(`pokemon/${name}`);
-    return pokemon.data;
+    return pokemon;
   },
   /**
    * Get the type of pokemon
