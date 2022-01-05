@@ -2558,6 +2558,11 @@ normalize-range@^0.1.2:
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
   integrity sha1-LRDAa9/TEuqXd2laTShDlFa3WUI=
 
+notiflix@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/notiflix/-/notiflix-3.2.2.tgz#85becd576763f73b6d76433f360b2c9eb5e393cd"
+  integrity sha512-m1TdfVf0pU3W3BDGhyW3GuGKan2x8xmQ0gPJlVmkqW9yo7yc/ftOYrPO0zFCfwxCpg0JVeT5CVHUfDxsPilRtQ==
+
 npm-run-path@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-4.0.1.tgz#b7ecd1e5ed53da8e37a55e1c2269e0b97ed748ea"
