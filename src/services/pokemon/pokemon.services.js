@@ -8,7 +8,6 @@ const pokemonServices = {
    */
   getByNumber: async (number) => {
     const pokemon = await api.get(`pokemon/${number}`);
-    console.log(pokemon.data);
     return pokemon.data;
   },
   /**
@@ -27,7 +26,24 @@ const pokemonServices = {
    */
   getByType: async (typeNumber) => {
     const pokemons = await api.get(`type/${typeNumber}`);
-    return pokemons.data;
+    return pokemons;
+  },
+  getStrength: async (types) => {
+    let strongAgainst = [];
+    let weakAgainst = [];
+    for (const type of types) {
+      let currentType = await pokemonServices.getByType(type);
+      strongAgainst = [
+        ...strongAgainst,
+        ...currentType.data.damage_relations.double_damage_to,
+      ];
+      weakAgainst = [
+        ...weakAgainst,
+        ...currentType.data.damage_relations.double_damage_from,
+      ];
+    }
+
+    return { strongAgainst, weakAgainst };
   },
   /**
    * Search ability by number
